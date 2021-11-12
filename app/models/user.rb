@@ -8,8 +8,10 @@
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
 #  email                  :string(255)      default(""), not null
+#  employer               :boolean          default(FALSE)
 #  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(255)
+#  job_seeker             :boolean          default(FALSE)
 #  last_name              :string(255)
 #  moderator              :boolean
 #  remember_created_at    :datetime

@@ -40,6 +40,17 @@
       <p class="pt-2 text-sm italic text-grey-dark">(we need your current password to confirm your changes)</p>
     </div>
 
+    <h3 class="mb-4 text-lg font-bold">Roles</h3>
+    <div class="input-group">
+      <%= f.check_box :job_seeker %>
+      <%= f.label :job_seeker, "I am looking for a job" %>
+    </div>
+
+    <div class="input-group">
+      <%= f.check_box :employer %>
+      <%= f.label :employer, "I am an employer" %>
+    </div>
+
     <div class="input-group">
       <%= f.submit "Update", class: "btn btn-default" %>
     </div>
