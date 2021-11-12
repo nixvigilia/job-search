@@ -28,3 +28,4 @@ Things you may want to cover:
 - install gems and follow instructions
 - scaffold Job
 - bin/rails action_text:install
+- bundle exec rails webpacker:install:stimulus
