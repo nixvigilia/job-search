@@ -29,3 +29,4 @@ Things you may want to cover:
 - scaffold Job
 - bin/rails action_text:install
 - bundle exec rails webpacker:install:stimulus
+- bundle exec rails webpacker:install:vue
