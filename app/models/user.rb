@@ -29,6 +29,7 @@
 #
 class User < ApplicationRecord
   include SimpleDiscussion::ForumUser
+
   has_person_name
   has_many :jobs, dependent: :destroy
 
@@ -40,5 +41,7 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+
 end
 

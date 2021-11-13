@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_024516) do
+ActiveRecord::Schema.define(version: 2021_11_12_204038) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -99,17 +99,27 @@ ActiveRecord::Schema.define(version: 2021_11_12_024516) do
   end
 
   create_table "jobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title"
-    t.string "link_to_apply"
-    t.string "company_name"
-    t.string "company_website"
-    t.string "role_type"
-    t.string "compensation_range"
-    t.boolean "remote", default: false
     t.string "years_of_experience"
+    t.string "title"
+    t.string "status", default: "pending"
+    t.string "link_to_apply"
+    t.string "compensation_range"
+    t.string "compensation_type"
+    t.string "estimated_hours"
+    t.string "company_website"
+    t.string "company_name"
+    t.string "headquarters"
+    t.string "upsell_type"
     t.bigint "user_id", null: false
+    t.integer "price"
+    t.datetime "published_at"
+    t.datetime "featured_until"
+    t.boolean "remote", default: false
+    t.boolean "featured", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_jobs_on_slug", unique: true
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
