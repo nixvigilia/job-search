@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 
+@import "trix/dist/trix.css";
 @import "components/buttons";
 @import "components/forms";
 

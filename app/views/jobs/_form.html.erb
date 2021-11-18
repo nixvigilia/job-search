@@ -1,3 +1,5 @@
+<div class="p-10 bg-white border rounded">
+
 <%= form_with(model: job) do |form| %>
   <% if job.errors.any? %>
     <div id="error_explanation">
@@ -11,62 +13,81 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="input-group">
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :link_to_apply %>
-    <%= form.text_field :link_to_apply %>
+  <div class="grid grid-cols-1 lg:gap-6 lg:grid-cols-2 input-group">
+    <div class="lg:col-span-1">
+      <%= form.label :link_to_apply, class: "label" %>
+      <%= form.text_field :link_to_apply, class: "input" %>
+    </div>
+    <div class="lg:col-span-1">
+      <%= form.label :headquarters, class: "label" %>
+      <%= form.text_field :headquarters, class: "input" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.rich_text_area :description %>
+  <div class="input-group">
+    <%= form.label :description, class: "label" %>
+    <%= form.rich_text_area :description, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
+  <div class="grid grid-cols-1 lg:gap-6 lg:grid-cols-2 input-group">
+    <div class="lg:col-span-1">
+      <%= form.label :company_name, class: "label" %>
+      <%= form.text_field :company_name, class: "input" %>
+    </div>
+    <div class="lg:col-span-1">
+      <%= form.label :company_website, class: "label" %>
+      <%= form.text_field :company_website, class: "input" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :company_website %>
-    <%= form.text_field :company_website %>
+  <div class="input-group">
+    <%= form.label :company_description, class: "label" %>
+    <%= form.rich_text_area :company_description, class: "input" %>
+  </div>
+  
+  <div class="flex items-center justify-start input-group">
+      <div class="lg:w-1/3 pr-4">
+        <%= form.label :compensation_type, class: "label" %>
+        <div class="relative">
+          <%= select_arrow %>
+          <%= form.select :compensation_type, options_for_select(Job::COMPENSATION_TYPES), {}, {:class => "select"} %>
+        </div>
+      </div>
+
+      <div class="px-4">
+        <%= form.label :compensation_range, class: "label" %>
+        <%= form.text_field :compensation_range, class: "input" %>
+      </div>
+
+      <div class="pl-4">
+        <%= form.label :estimated_hours, class: "label" %>
+        <%= form.text_field :estimated_hours, class: "input" %>
+      </div>
   </div>
 
-  <div class="field">
-    <%= form.label :company_description %>
-    <%= form.rich_text_area :company_description %>
-  </div>
 
-  <div class="field">
-    <%= form.label :role_type %>
-    <%= form.text_field :role_type %>
-  </div>
 
-  <div class="field">
-    <%= form.label :compensation_range %>
-    <%= form.text_field :compensation_range %>
-  </div>
-
-  <div class="field">
-    <%= form.label :remote %>
+  <div class="input-group input-checkbox">
     <%= form.check_box :remote %>
+    <%= form.label :remote, class: "label" %>
   </div>
 
-  <div class="field">
-    <%= form.label :years_of_experience %>
-    <%= form.text_field :years_of_experience %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+    <div class="input-group lg:w-1/3 pr-4">
+      <%= form.label :years_of_experience, class: "label" %>
+      <div class="relative">
+        <%= select_arrow %>
+        <%= form.select :years_of_experience, options_for_select(Job::YEARS_OF_EXPERIENCE_RANGE), {}, {:class => "select"} %>
+      </div>
+    </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-indigo"%>
   </div>
 <% end %>
+
+</div>

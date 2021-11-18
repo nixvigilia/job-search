@@ -1,7 +1,7 @@
 module ApplicationHelper
 
     def render_svg(name, styles: "fill-current text-gray-500", title: nil)
-        filename = "={name.svg}"
+        filename = "#{name}.svg"
         title ||= name.underscore.humanize
         inline_svg_tag(filename, aria: true, nocomment: true, title: title, class: styles)
     end
@@ -12,6 +12,10 @@ module ApplicationHelper
 
     def author_of(resource)
         user_signed_in? && current_user.id = resource.user_id
+    end
+
+    def select_arrow
+        render partial: "shared/select_arrow.html.erb"
     end
     
 end
