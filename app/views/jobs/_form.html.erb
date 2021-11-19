@@ -1,6 +1,6 @@
 <div class="p-10 bg-white border rounded">
 
-<%= form_with(model: job) do |form| %>
+<%= form_with(model: job, local: true, multipart: true) do |form| %>
   <% if job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -13,7 +13,17 @@
     </div>
   <% end %>
 
-  <div class="input-group">
+  <div class="flex flex-wrap items-center justify-between input-group">
+    <div>
+      <%= form.label :company_logo, class: "label" %>
+      <%= form.file_field :company_logo %>
+    </div>
+    <% if form.object.company_logo.attached? %>
+      <%= image_tag form.object.company_logo, class: "w-24 h-auto" %>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.label :title, class: "label" %>
     <%= form.text_field :title, class: "input" %>
   </div>
@@ -55,7 +65,7 @@
         <%= form.label :compensation_type, class: "label" %>
         <div class="relative">
           <%= select_arrow %>
-          <%= form.select :compensation_type, options_for_select(Job::COMPENSATION_TYPES), {}, {:class => "select"} %>
+          <%= form.select :compensation_type, options_for_select(Job::COMPENSATION_TYPES, :selected => form.object.compensation_type), {}, {:class => "select"} %>
         </div>
       </div>
 
@@ -81,7 +91,7 @@
       <%= form.label :years_of_experience, class: "label" %>
       <div class="relative">
         <%= select_arrow %>
-        <%= form.select :years_of_experience, options_for_select(Job::YEARS_OF_EXPERIENCE_RANGE), {}, {:class => "select"} %>
+        <%= form.select :years_of_experience, options_for_select(Job::YEARS_OF_EXPERIENCE_RANGE, :selected => form.object.years_of_experience), {}, {:class => "select"} %>
       </div>
     </div>
 

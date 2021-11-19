@@ -1,45 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Jobs</h1>
+<% content_for :hero do %>
+  <div class="py-20">
+    <div class="container flex flex-wrap justify-center mx-auto text-center">
+      <h1 class="text-4xl font-black leading-tight">Find a Ruby on Rails developer</h1>
+      <p class="w-full">The internet's number one resource for Ruby on Rails developers</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Link to apply</th>
-      <th>Description</th>
-      <th>Company name</th>
-      <th>Company website</th>
-      <th>Company description</th>
-      <th>Compensation range</th>
-      <th>Remote</th>
-      <th>Years of experience</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div class="flex items-center justify-around mt-3">
+        <%= link_to "Find a developer", "#", class: "btn text-white bg-indigo-600 py-2 px-4 hover:bg-indigo-500 lg:mr-2 border border-indigo-500"%>
+        <%= link_to "Find a job", jobs_path(anchor: "jobs-index"), class: "bg-transparent hover:bg-purple-500 text-purple-600 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent rounded lg:ml-2" %>
+      </div>
 
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.title %></td>
-        <td><%= job.link_to_apply %></td>
-        <td><%= job.description %></td>
-        <td><%= job.company_name %></td>
-        <td><%= job.company_website %></td>
-        <td><%= job.company_description %></td>
-        <td><%= job.compensation_range %></td>
-        <td><%= job.remote %></td>
-        <td><%= job.years_of_experience %></td>
-        <td><%= job.user_id %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <p class="w-full mt-3">or find a developer friends in the <%= link_to "community", '#', class: "text-purple-600" %></p>
 
-<br>
+    </div>
+  </div>
+<% end %>
 
-<%= link_to 'New Job', new_job_path %>
+<div id="jobs-index" class="container px-0 mx-auto lg:px-48">
+  <%= render @jobs %>
+</div>
