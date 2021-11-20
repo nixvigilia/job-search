@@ -41,3 +41,20 @@ Rails.application.config.content_security_policy do |policy|
     end
 end
 ```
+
+# job_ui
+
+- yarn add @tailwindcss/typography
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    // ...
+  ],
+};
+```
