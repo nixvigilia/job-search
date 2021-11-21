@@ -58,3 +58,5 @@ module.exports = {
   ],
 };
 ```
+
+- yarn add ky vue-turbolinks
