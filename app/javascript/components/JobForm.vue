@@ -13,7 +13,7 @@
         border
       "
     >
-      <div class="p-10">
+      <div class="lg:p-10 p-2">
         <form @submit.prevent="submit" enctype="multipart/form-data">
           <div v-if="step === 1">
             <JobInfo :job="job" @nextStep="handleNextStep" />

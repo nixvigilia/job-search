@@ -1,11 +1,11 @@
 <template>
   <div>
-    <label for="apply-link" class="label inline-block">Apply link</label>
+    <label for="company-name" class="label">Company name</label>
     <span class="required"></span>
     <input
       type="text"
-      id="apply-link"
-      placeholder="www.companyname.com/apply"
+      id="company-name"
+      placeholder="Enter company name"
       class="input"
       required
     />
