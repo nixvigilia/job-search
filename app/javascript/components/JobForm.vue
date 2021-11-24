@@ -1,5 +1,7 @@
 <template>
-  <div class="py-16">
+  <div class="pt-8 pb-16">
+    <step-pagination :step="step"></step-pagination>
+
     <div
       class="
         relative
@@ -41,12 +43,14 @@
 import JobInfo from "./steps/JobInfo";
 import JobPreview from "./steps/JobPreview";
 import JobPurchase from "./steps/JobPurchase";
+import StepPagination from "./StepPagination";
 
 export default {
   components: {
     JobInfo,
     JobPreview,
     JobPurchase,
+    StepPagination,
   },
   data() {
     return {
