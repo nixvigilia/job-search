@@ -9,27 +9,25 @@
       <span class="mt-2 ml-1 required"></span>
     </div>
 
-    <job-title :job="job" class="mb-6"></job-title>
-    <apply-link :job="job" class="mb-6"></apply-link>
-    <job-description :job="job" class="mb-6"></job-description>
+    <JobTitle class="mb-6"></JobTitle>
+    <ApplyLink class="mb-6"></ApplyLink>
+    <JobDescription class="mb-6"></JobDescription>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
-      <job-experience :job="job" class="lg:col-span-1"></job-experience>
-      <job-remote :job="job" class="lg:col-span-1"></job-remote>
+      <JobExperience class="lg:col-span-1"></JobExperience>
+      <JobRemote class="lg:col-span-1"></JobRemote>
     </div>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
-      <compensation-type :job="job" class="lg:col-span-1"></compensation-type>
-      <estimated-hours
-        v-if="jobType === 'Contract'"
-        :job="job"
+      <CompensationType class="lg:col-span-1"></CompensationType>
+      <EstimatedHours
+        v-if="$store.form.job.compensationType == 'Contract'"
         class="lg:col-span-1"
-      ></estimated-hours>
-      <compensation-range
-        v-else
-        :job="job"
+      ></EstimatedHours>
+      <CompensationRange
+        v-if="$store.form.job.compensationType == 'Full-time'"
         class="lg:col-span-1"
-      ></compensation-range>
+      ></CompensationRange>
     </div>
 
     <h3 class="mb-2 text-2xl font-black">About the company</h3>
@@ -37,21 +35,21 @@
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
       <div class="lg:col-span-1">
         <p class="block w-full label">Company logo</p>
-        <file-select v-model="job.companyLogo"></file-select>
+        <FileSelect></FileSelect>
         <p class="my-1 text-sm text-gray-500">
           While not required, we recommend adding a company logo to helpy your
           listing stand out.
         </p>
       </div>
-      <company-website :job="job" class="lg:col-span-1"></company-website>
+      <CompanyWebsite class="lg:col-span-1"></CompanyWebsite>
     </div>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
-      <company-name :job="job" class="lg:col-span-1"></company-name>
-      <company-email :job="job" class="lg:col-span-1"></company-email>
+      <CompanyName class="lg:col-span-1"></CompanyName>
+      <CompanyEmail class="lg:col-span-1"></CompanyEmail>
     </div>
 
-    <company-description :job="job" class="mb-6"></company-description>
+    <CompanyDescription class="mb-6"></CompanyDescription>
 
     <a
       @click.prevent="next()"
@@ -102,23 +100,32 @@ export default {
     CompanyWebsite,
     CompanyDescription,
   },
-  data() {
-    return {
-      jobType: "Full-time",
-    };
-  },
-  props: {
-    job: {
-      type: Object,
-      required: true,
-    },
-  },
   methods: {
     next() {
       this.$emit("nextStep");
     },
   },
+  created() {
+    const storedForm = this.$actions.openStorage();
+
+    if (storedForm) {
+      this.$store.form.job.jobTitle = storedForm.jobTitle;
+      this.$store.form.job.companyWebsite = storedForm.companyWebsite;
+      this.$store.form.job.companyName = storedForm.companyName;
+      this.$store.form.job.companyLogo = storedForm.companyLogo;
+      this.$store.form.job.companyDescription = storedForm.companyDescription;
+      this.$store.form.job.companyEmail = storedForm.companyEmail;
+      this.$store.form.job.compensationRange = storedForm.compensationRange;
+      this.$store.form.job.compensationType = storedForm.compensationType;
+      this.$store.form.job.jobDescription = storedForm.jobDescription;
+      this.$store.form.job.estimatedHours = storedForm.estimatedHours;
+      this.$store.form.job.headquarters = storedForm.headquarters;
+      this.$store.form.job.linkToApply = storedForm.linkToApply;
+      this.$store.form.job.price = storedForm.price;
+      this.$store.form.job.remote = storedForm.remote;
+      this.$store.form.job.yearsOfExperience = storedForm.yearsOfExperience;
+      this.$store.form.job.upsellType = storedForm.upsellType;
+    }
+  },
 };
 </script>
-
-<style lang=""></style>

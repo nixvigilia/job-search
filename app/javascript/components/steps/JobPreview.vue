@@ -36,12 +36,6 @@
 </template>
 <script>
 export default {
-  props: {
-    job: {
-      type: Object,
-      required: true,
-    },
-  },
   methods: {
     next() {
       this.$emit("nextStep");

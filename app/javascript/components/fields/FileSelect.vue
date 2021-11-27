@@ -2,11 +2,11 @@
   <div class="relative inline-block">
     <img
       class="object-cover rounded-full"
-      :src="companyImage"
-      :class="{ 'mt-2 w-32 h-32': !!companyImage }"
+      :src="$store.form.job.companyLogo"
+      :class="{ 'mt-2 w-32 h-32': !!$store.form.job.companyLogo }"
     />
     <div v-if="error" class="mb-1 text-sm text-red-500">{{ error }}</div>
-    <div v-if="!companyImage">
+    <div v-if="!$store.form.job.companyLogo">
       <label class="file-select">
         <div class="inline-block select-button btn btn-default">
           <span>Select file</span>
@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      companyImage: "",
+      companyLogo: "",
       error: "",
     };
   },
@@ -55,16 +55,18 @@ export default {
     },
     createImage(file) {
       const reader = new FileReader();
-      const vm = this;
+      // const vm = this;
 
       reader.onload = (e) => {
-        vm.companyImage = e.target.result;
+        this.$store.form.job.companyLogo = e.target.result;
+        this.$actions.updateForm("companyLogo", e.target.result);
       };
 
       reader.readAsDataURL(file);
     },
     removeImage() {
-      this.companyImage = "";
+      this.$store.form.job.companyLogo = null;
+      this.$actions.updateForm("companyLogo", null);
     },
   },
 };

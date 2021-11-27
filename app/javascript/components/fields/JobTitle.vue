@@ -8,9 +8,8 @@
       placeholder="Enter a job title"
       class="input"
       required
+      :value="$store.form.job.jobTitle"
+      @input="$actions.updateForm('jobTitle', $event.target.value)"
     />
   </div>
 </template>
-<script>
-export default {};
-</script>

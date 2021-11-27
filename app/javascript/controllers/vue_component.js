@@ -1,4 +1,4 @@
-import data from "../store";
+import { store } from "../store";
 import { Controller } from "stimulus";
 import Vue from "vue";
 
@@ -12,7 +12,7 @@ const VueComponent = (component) =>
       window.jobForm = new Vue({
         el,
         render: (h) => h(component),
-        data: data.store,
+        data: store,
       });
     }
   };

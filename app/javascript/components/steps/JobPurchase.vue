@@ -21,12 +21,6 @@
 </template>
 <script>
 export default {
-  props: {
-    job: {
-      type: Object,
-      required: true,
-    },
-  },
   methods: {
     prev() {
       this.$emit("prevStep");

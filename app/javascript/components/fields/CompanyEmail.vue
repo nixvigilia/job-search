@@ -7,6 +7,8 @@
       id="company-email"
       placeholder="john@company.com"
       class="input"
+      :value="$store.form.job.companyEmail"
+      @input="$actions.updateForm('companyEmail', $event.target.value)"
       required
     />
     <p class="my-1 text-sm text-gray-500">

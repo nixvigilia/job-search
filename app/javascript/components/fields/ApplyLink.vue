@@ -8,9 +8,8 @@
       placeholder="www.companyname.com/apply"
       class="input"
       required
+      :value="$store.form.job.linkToApply"
+      @change="$actions.updateForm('linkToApply', $event.target.value)"
     />
   </div>
 </template>
-<script>
-export default {};
-</script>

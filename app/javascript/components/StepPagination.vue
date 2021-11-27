@@ -21,11 +21,11 @@
           border-b-4 border-transparent
           lg:pt-2 lg:px-4 lg:pb-4
         "
-        :class="{ 'border-indigo-500': step === 1 }"
+        :class="{ 'border-indigo-500': $store.form.step === 1 }"
       >
         <p class="text-xs text-gray-600 uppercase lg:text-sm">Step 1</p>
         <h3
-          :class="{ 'text-indigo-600': step === 1 }"
+          :class="{ 'text-indigo-600': $store.form.step === 1 }"
           class="text-sm font-black lg:text-xl"
         >
           Job Details
@@ -39,11 +39,11 @@
           border-b-4 border-transparent
           lg:pt-2 lg:px-4 lg:pb-4
         "
-        :class="{ 'border-indigo-500': step === 2 }"
+        :class="{ 'border-indigo-500': $store.form.step === 2 }"
       >
         <p class="text-xs text-gray-600 uppercase lg:text-sm">Step 2</p>
         <h3
-          :class="{ 'text-indigo-600': step === 2 }"
+          :class="{ 'text-indigo-600': $store.form.step === 2 }"
           class="text-sm font-black lg:text-xl"
         >
           Preview
@@ -57,11 +57,11 @@
           border-b-4 border-transparent
           lg:pt-2 lg:px-4 lg:pb-4
         "
-        :class="{ 'border-indigo-500': step === 3 }"
+        :class="{ 'border-indigo-500': $store.form.step === 3 }"
       >
         <p class="text-xs text-gray-600 uppercase lg:text-sm">Step 3</p>
         <h3
-          :class="{ 'text-indigo-600': step === 3 }"
+          :class="{ 'text-indigo-600': $store.form.step === 3 }"
           class="text-sm font-black lg:text-xl"
         >
           Purchase
@@ -70,14 +70,3 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  props: {
-    step: {
-      type: Number,
-      required: true,
-    },
-  },
-};
-</script>
-<style lang=""></style>

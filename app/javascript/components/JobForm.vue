@@ -1,6 +1,6 @@
 <template>
   <div class="pt-8 pb-16">
-    <step-pagination :step="step"></step-pagination>
+    <step-pagination></step-pagination>
 
     <div
       class="
@@ -17,20 +17,16 @@
     >
       <div class="lg:p-10 p-2">
         <form @submit.prevent="submit" enctype="multipart/form-data">
-          <div v-if="step === 1">
-            <JobInfo :job="job" @nextStep="handleNextStep" />
+          <div v-if="$store.form.step === 1">
+            <JobInfo @nextStep="handleNextStep" />
           </div>
 
-          <div v-if="step === 2">
-            <JobPreview
-              :job="job"
-              @nextStep="handleNextStep"
-              @prevStep="handlePrevStep"
-            />
+          <div v-if="$store.form.step === 2">
+            <JobPreview @nextStep="handleNextStep" @prevStep="handlePrevStep" />
           </div>
 
-          <div v-if="step === 3">
-            <JobPurchase :job="job" @prevStep="handlePrevStep" />
+          <div v-if="$store.form.step === 3">
+            <JobPurchase @prevStep="handlePrevStep" />
           </div>
         </form>
       </div>
@@ -52,18 +48,12 @@ export default {
     JobPurchase,
     StepPagination,
   },
-  data() {
-    return {
-      step: this.$root.form.step,
-      job: this.$root.form.job,
-    };
-  },
   methods: {
     handleNextStep() {
-      this.step++;
+      this.$store.form.step++;
     },
     handlePrevStep() {
-      this.step--;
+      this.$store.form.step--;
     },
   },
 };

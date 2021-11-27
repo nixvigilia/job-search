@@ -4,6 +4,8 @@
     <span class="required"></span>
     <input
       type="text"
+      :value="$store.form.job.companyWebsite"
+      @input="$actions.updateForm('companyWebsite', $event.target.value)"
       id="company-website"
       placeholder="www.companywebsite.com"
       class="input"
@@ -11,6 +13,3 @@
     />
   </div>
 </template>
-<script>
-export default {};
-</script>
