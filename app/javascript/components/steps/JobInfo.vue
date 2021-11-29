@@ -1,5 +1,20 @@
 <template>
   <div>
+    <a
+      @click.prevent="next()"
+      class="
+        btn
+        text-white
+        bg-indigo-600
+        py-2
+        px-4
+        hover:bg-indigo-500
+        lg:mr-2
+        border border-indigo-500
+        btn-lg
+      "
+      >Continue</a
+    >
     <h3 class="mb-2 text-2xl font-black">About the job</h3>
 
     <div class="inline-flex mb-6">

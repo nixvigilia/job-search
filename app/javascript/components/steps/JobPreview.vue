@@ -1,6 +1,11 @@
 <template>
   <div>
-    <h1 class="font-black text-4xl">Preview</h1>
+    <h1 class="font-black text-gray-300">Preview</h1>
+
+    <div class="grid gap-10 lg:grid-cols-12 grid-col-1">
+      <preview-content></preview-content>
+      <preview-sidebar></preview-sidebar>
+    </div>
 
     <a
       @click.prevent="prev()"
@@ -35,7 +40,16 @@
   </div>
 </template>
 <script>
+import PreviewContent from "../preview/PreviewContent";
+import PreviewSidebar from "../preview/PreviewSidebar";
+// import FormPagination from "../FormPagination";
+
 export default {
+  components: {
+    PreviewContent,
+    PreviewSidebar,
+    // FormPagination,
+  },
   methods: {
     next() {
       this.$emit("nextStep");
@@ -47,4 +61,3 @@ export default {
   },
 };
 </script>
-<style lang=""></style>

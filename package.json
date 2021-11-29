@@ -17,6 +17,7 @@
     "turbolinks": "^5.2.0",
     "vue": "^2.6.14",
     "vue-loader": "^15.9.8",
+    "vue-pluralize": "^0.0.2",
     "vue-template-compiler": "^2.6.14",
     "vue-trix": "^1.2.0",
     "vue-turbolinks": "^2.2.2",

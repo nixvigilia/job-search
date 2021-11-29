@@ -61,3 +61,4 @@ module.exports = {
 
 - yarn add ky vue-turbolinks
 - yarn add vue-trix
+- yarn add vue-pluralize
