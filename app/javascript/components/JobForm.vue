@@ -56,5 +56,33 @@ export default {
       this.$store.form.step--;
     },
   },
+  mounted() {
+    this.$actions.updateForm("price", this.$store.form.job.price);
+    this.$actions.updateForm("remote", true);
+    this.$actions.updateForm("compensationType", "Full-time");
+    this.$actions.updateForm("yearsOfExperience", "3");
+    this.$actions.updateForm("upsellType", "No thanks");
+
+    const data = new FormData();
+    data.append("upsell_type", this.$store.form.job.upsellType);
+
+    // axios({
+    //   url: "/intents",
+    //   method: "POST",
+    //   data: data,
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //   },
+    // })
+    //   .then((response) => {
+    //     this.$store.form.paymentIntentClientSecret =
+    //       response.data.client_secret;
+    //     this.$store.form.job.price = response.data.amount / 100;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  },
 };
 </script>

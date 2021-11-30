@@ -22,6 +22,7 @@ export const store = Vue.observable({
       yearsOfExperience: null,
       upsellType: "No, thanks",
     },
+    cardName: null,
   },
 });
 
@@ -42,6 +43,13 @@ export const actions = {
 
   saveStorage(form) {
     localStorage.setItem("form", JSON.stringify(form));
+  },
+
+  formattedPrice() {
+    return new Intl.NumberFormat("en-EN", {
+      style: "currency",
+      currency: "PHP",
+    }).format(store.form.job.price);
   },
 };
 

@@ -66,6 +66,10 @@
 
     <CompanyDescription class="mb-6"></CompanyDescription>
 
+    <div v-if="$actions.formattedPrice()">
+      {{ $actions.formattedPrice() }}
+    </div>
+
     <a
       @click.prevent="next()"
       class="

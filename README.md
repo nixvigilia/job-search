@@ -62,3 +62,11 @@ module.exports = {
 - yarn add ky vue-turbolinks
 - yarn add vue-trix
 - yarn add vue-pluralize
+
+# Stripe
+
+- rails credentials:edit --environment=development
+<!-- new -->
+- EDITOR="mate --wait" bin/rails credentials:edit --environment=development
+<!-- code -->
+- EDITOR="code --wait" bin/rails credentials:edit --environment=development
