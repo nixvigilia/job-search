@@ -16,7 +16,11 @@
       "
     >
       <div class="lg:p-10 p-2">
-        <form @submit.prevent="submit" enctype="multipart/form-data">
+        <form
+          @submit.prevent="submit"
+          enctype="multipart/form-data"
+          ref="jobForm"
+        >
           <div v-if="$store.form.step === 1">
             <JobInfo @nextStep="handleNextStep" />
           </div>
@@ -40,6 +44,12 @@ import JobInfo from "./steps/JobInfo";
 import JobPreview from "./steps/JobPreview";
 import JobPurchase from "./steps/JobPurchase";
 import StepPagination from "./StepPagination";
+import { getMetaValue } from "helpers";
+import axios from "axios";
+
+axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded";
+axios.defaults.headers.post["X-CSRF-Token"] = getMetaValue("csrf-token");
 
 export default {
   components: {
@@ -66,23 +76,20 @@ export default {
     const data = new FormData();
     data.append("upsell_type", this.$store.form.job.upsellType);
 
-    // axios({
-    //   url: "/intents",
-    //   method: "POST",
-    //   data: data,
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //   },
-    // })
-    //   .then((response) => {
-    //     this.$store.form.paymentIntentClientSecret =
-    //       response.data.client_secret;
-    //     this.$store.form.job.price = response.data.amount / 100;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios({
+      url: "/intents",
+      method: "POST",
+      data: data,
+    })
+      .then((response) => {
+        this.$store.form.paymentIntentClientSecret =
+          response.data.client_secret;
+        this.$store.form.job.price = response.data.amount / 100;
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>

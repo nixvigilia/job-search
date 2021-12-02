@@ -25,14 +25,10 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user = current_user
 
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: "Job was successfully created." }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if @job.save
+      render json: { redirect_url: job_url(@job), notice: "Thanks for posting! Your job is now pending review." }
+    else
+      render json: @job.errors
     end
   end
 
@@ -40,7 +36,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: "Job was successfully updated." }
+        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,6 +54,32 @@ class JobsController < ApplicationController
     end
   end
 
+  def intents
+    # intent_amount = case params[:upsell_type].parameterize
+    # when Job::UPSELL_TYPES[:no_thanks]
+    #   Job::PRICING[:base]
+    # when Job::UPSELL_TYPES[:good]
+    #   Job::PRICING[:good]
+    # when Job::UPSELL_TYPES[:better]
+    #   Job::PRICING[:better]
+    # when Job::UPSELL_TYPES[:great]
+    #   Job::PRICING[:great]
+    # else
+    #   Job::PRICING[:base]
+    # end
+
+    intent_amount = Job::PRICING[:base]
+    intent_amount = intent_amount * 100
+
+    @intent = Stripe::PaymentIntent.create({
+      amount: intent_amount,
+      currency: "usd",
+      payment_method_types: ["card"]
+    })
+
+    render json: @intent
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
@@ -66,8 +88,10 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(
+      # params.require(:job).permit()
+      params.permit(
         :company_logo, 
+        # :company_email,
         :company_name, 
         :company_website, 
         :company_description, 

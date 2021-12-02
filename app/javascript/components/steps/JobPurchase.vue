@@ -37,7 +37,7 @@
         </p>
       </div>
 
-      <div>
+      <div class="mb-4">
         <h2 class="text-2xl font-black">Payment Information</h2>
         <StripeForm />
         <p class="pt-6 text-xs text-gray-600">
@@ -59,21 +59,6 @@
           hover:text-white hover:bg-purple-500 hover:border-transparent
         "
         >Back</a
-      >
-      <a
-        @click.prevent="next()"
-        class="
-          btn
-          text-white
-          bg-indigo-600
-          py-2
-          px-4
-          hover:bg-indigo-500
-          lg:mr-2
-          border border-indigo-500
-          btn-lg
-        "
-        >Next</a
       >
     </div>
   </div>

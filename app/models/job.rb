@@ -34,6 +34,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Job < ApplicationRecord
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
@@ -48,6 +49,26 @@ class Job < ApplicationRecord
   scope :pending, -> { where(status: JOB_STATUSES[:pending]) }
   scope :published, -> { where(status: JOB_STATUSES[:published]) }
   scope :archived, -> { where(status: JOB_STATUSES[:archived]) }
+
+  BASE_JOB_PRICE = 199
+  GOOD_JOB_PRICE = BASE_JOB_PRICE + 49
+  BETTER_JOB_PRICE = BASE_JOB_PRICE + 69
+  GREAT_JOB_PRICE = BASE_JOB_PRICE + 149
+
+  # pricing
+  PRICING = {
+    base: BASE_JOB_PRICE,
+    good: GOOD_JOB_PRICE,
+    better: BETTER_JOB_PRICE,
+    great: GREAT_JOB_PRICE
+  }
+
+  UPSELL_TYPES = {
+    no_thanks: "no-thanks",
+    good: "good",
+    better: "better",
+    great: "great"
+  }
 
   # constants
   COMPENSATION_TYPES = [
@@ -95,7 +116,9 @@ class Job < ApplicationRecord
   YEARS_OF_EXPERIENCE_RANGE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "more than 10"].freeze
 
   def slug_candidates
-    [:title, [:title, :company_name, :id]]
+    [:title, [:title, "#{Job.where(
+      title: title, company_name: company_name
+    ).count + 1}"]]
   end
   
 

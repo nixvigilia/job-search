@@ -9,6 +9,7 @@
     "@rails/webpacker": "5.4.3",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^9",
+    "axios": "^0.24.0",
     "ky": "^0.28.7",
     "postcss": "^7",
     "stimulus": "^3.0.1",

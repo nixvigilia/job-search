@@ -70,3 +70,5 @@ module.exports = {
 - EDITOR="mate --wait" bin/rails credentials:edit --environment=development
 <!-- code -->
 - EDITOR="code --wait" bin/rails credentials:edit --environment=development
+
+- yarn add axios

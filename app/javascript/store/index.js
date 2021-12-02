@@ -1,9 +1,16 @@
 import Vue from "vue/dist/vue.esm";
+import axios from "axios";
+import { getMetaValue } from "helpers";
+
+axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded";
+axios.defaults.headers.post["X-CSRF-Token"] = getMetaValue("csrf-token");
 
 export const store = Vue.observable({
   form: {
     step: 1,
     job: {
+      cardName: null,
       companyName: null,
       companyWebsite: null,
       companyLogo: null,
@@ -22,7 +29,7 @@ export const store = Vue.observable({
       yearsOfExperience: null,
       upsellType: "No, thanks",
     },
-    cardName: null,
+    paymentIntentClientSecret: null,
   },
 });
 
@@ -51,11 +58,52 @@ export const actions = {
       currency: "PHP",
     }).format(store.form.job.price);
   },
-};
 
-Vue.prototype.$store = store;
-Vue.prototype.$store = actions;
+  handleBoolean(input, value) {
+    if (input === value) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 
-export default {
-  store,
+  handlePurchase(stripeResult) {
+    const formData = new FormData();
+    const job = store.form.job;
+
+    formData.append("company_email", job.companyEmail);
+    formData.append("company_name", job.companyName);
+    formData.append("company_website", job.companyWebsite);
+    formData.append("company_description", job.companyDescription);
+    formData.append("compensation_range", job.compensationRange);
+    formData.append("compensation_type", job.compensationType);
+    formData.append("description", job.jobDescription);
+    formData.append("headquarters", job.headquarters);
+    formData.append("link_to_apply", job.linkToApply);
+    formData.append("title", job.jobTitle);
+    formData.append("years_of_experience", job.yearsOfExperience);
+    // formData.append("upsell_type", job.upsellType)
+    formData.append("remote", actions.handleBoolean(job.remote, "Yes"));
+    formData.append("price", job.price);
+
+    if (job.companyLogo) {
+      formData.append("companyLogo", job.companyLogo);
+    }
+
+    axios({
+      url: "/jobs",
+      method: "POST",
+      data: formData,
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          // console.log(response);
+          window.location = response.data.redirect_url;
+        }
+      })
+      .catch((errors) => {
+        // @job.errors TODO: Render in view
+        console.log(errors);
+      });
+  },
 };
