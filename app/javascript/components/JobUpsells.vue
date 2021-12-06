@@ -123,7 +123,7 @@
               font-bold
               text-white
               uppercase
-              bg-teal-600
+              bg-green-600
               rounded
               pointer-events-none
               select-none
@@ -252,6 +252,7 @@
         id="upsell_none"
         :checked="$store.form.job.upsellType === 'No thanks'"
         value="No thanks"
+        v-on:click="setRadioSell('no-thanks')"
       />
       <label
         for="upsell_none"
@@ -301,6 +302,11 @@ export default {
         return "border-black bg-gray-100";
       } else {
         return "border-gray-300 bg-white";
+      }
+    },
+    setRadioSell(upsellType) {
+      if (upsellType) {
+        console.log(upsellType);
       }
     },
   },

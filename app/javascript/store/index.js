@@ -30,7 +30,14 @@ export const store = Vue.observable({
       upsellType: "No, thanks",
     },
     paymentIntentClientSecret: null,
+    upsellPricing: {
+      good: 49,
+      better: 69,
+      great: 149,
+    },
   },
+  showPaymentButton: true,
+  formInvalid: false,
 });
 
 export const actions = {
@@ -82,7 +89,7 @@ export const actions = {
     formData.append("link_to_apply", job.linkToApply);
     formData.append("title", job.jobTitle);
     formData.append("years_of_experience", job.yearsOfExperience);
-    // formData.append("upsell_type", job.upsellType)
+    formData.append("upsell_type", job.upsellType);
     formData.append("remote", actions.handleBoolean(job.remote, "Yes"));
     formData.append("price", job.price);
 

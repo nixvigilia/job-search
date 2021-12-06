@@ -66,6 +66,8 @@
 
     <CompanyDescription class="mb-6"></CompanyDescription>
 
+    <JobUpsells></JobUpsells>
+
     <div v-if="$actions.formattedPrice()">
       {{ $actions.formattedPrice() }}
     </div>
@@ -102,6 +104,7 @@ import CompanyEmail from "../fields/CompanyEmail";
 import FileSelect from "../fields/FileSelect";
 import CompanyWebsite from "../fields/CompanyWebsite";
 import CompanyDescription from "../fields/CompanyDescription";
+import JobUpsells from "../JobUpsells";
 
 export default {
   components: {
@@ -118,6 +121,7 @@ export default {
     FileSelect,
     CompanyWebsite,
     CompanyDescription,
+    JobUpsells,
   },
   methods: {
     next() {
