@@ -3,6 +3,7 @@
 # Table name: jobs
 #
 #  id                  :bigint           not null, primary key
+#  company_email       :string(255)
 #  company_name        :string(255)
 #  company_website     :string(255)
 #  compensation_range  :string(255)

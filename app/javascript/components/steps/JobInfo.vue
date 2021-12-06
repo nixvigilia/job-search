@@ -73,18 +73,9 @@
     </div>
 
     <a
-      @click.prevent="next()"
-      class="
-        btn
-        text-white
-        bg-indigo-600
-        py-2
-        px-4
-        hover:bg-indigo-500
-        lg:mr-2
-        border border-indigo-500
-        btn-lg
-      "
+      @click="next()"
+      class="btn btn-white btn-outline btn-lg"
+      :class="{ 'opacity-25 pointer-events-none': !$store.formInvalid }"
       >Continue</a
     >
   </div>
@@ -127,6 +118,14 @@ export default {
     next() {
       this.$emit("nextStep");
     },
+  },
+  mounted() {
+    document.querySelector("form").addEventListener("input", () => {
+      const childrenWithValidations = this.$children.filter((c) => c.$v);
+      this.$store.formInvalid = childrenWithValidations.every(
+        (child) => child.$v.$invalid == false
+      );
+    });
   },
   created() {
     const storedForm = this.$actions.openStorage();

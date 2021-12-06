@@ -11,10 +11,29 @@
     </VueTrix>
   </div>
 </template>
-<script>
-import VueTrix from "vue-trix";
 
+<script>
+import { required, minLength } from "vuelidate/lib/validators";
+
+import VueTrix from "vue-trix";
 export default {
+  data() {
+    return {
+      validatedDescription: null,
+    };
+  },
+  validations: {
+    validatedDescription: {
+      required,
+      minLength: minLength(150),
+    },
+  },
+  methods: {
+    setDescription(value) {
+      this.validatedDescription = value;
+      this.$v.validatedDescription.$touch();
+    },
+  },
   components: {
     VueTrix,
   },

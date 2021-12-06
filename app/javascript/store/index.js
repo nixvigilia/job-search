@@ -1,6 +1,13 @@
 import Vue from "vue/dist/vue.esm";
 import axios from "axios";
 import { getMetaValue } from "helpers";
+import {
+  required,
+  minLength,
+  url,
+  email,
+  numeric,
+} from "vuelidate/lib/validators";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";

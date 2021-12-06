@@ -90,7 +90,7 @@ class JobsController < ApplicationController
       # params.require(:job).permit()
       params.permit(
         :company_logo, 
-        # :company_email,
+        :company_email,
         :company_name, 
         :company_website, 
         :company_description, 

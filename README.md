@@ -72,3 +72,6 @@ module.exports = {
 - EDITOR="code --wait" bin/rails credentials:edit --environment=development
 
 - yarn add axios
+- yarn add vuelidate
+
+- rails g migration add_company_email_to_jobs company_email:string

@@ -18,7 +18,7 @@
     <label for="card-element" class="label">Credit card details</label>
     <div id="card-element" class="input"></div>
     <div class="text-sm text-red-400" v-if="errors">Card errors</div>
-    <!-- <button
+    <button
       class="mt-6 btn btn-red btn-lg"
       @click.prevent="handleSubmit($event)"
       :class="{
@@ -28,14 +28,14 @@
     >
       <span v-if="$store.showPaymentButton">Pay with credit card</span>
       <span v-else>Please wait...</span>
-    </button> -->
-    <button
+    </button>
+    <!-- <button
       class="mt-6 btn btn-red btn-lg"
       @click.prevent="handleSubmit($event)"
       :disabled="disable"
     >
       Pay with credit card
-    </button>
+    </button> -->
   </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
       if (!this.card || !this.stripe) {
         return;
       }
-      // this.$store.showPaymentButton = false;
+      this.$store.showPaymentButton = false;
       this.disable = true;
       this.handleCardPayment();
     },

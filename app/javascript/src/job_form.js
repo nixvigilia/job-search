@@ -4,8 +4,10 @@ import ky from "ky";
 import TurbolinksAdapter from "vue-turbolinks";
 import { getMetaValue } from "helpers";
 import VuePluralize from "vue-pluralize";
+import Vuelidate from "vuelidate";
 Vue.use(TurbolinksAdapter);
 Vue.use(VuePluralize);
+Vue.use(Vuelidate);
 
 Vue.prototype.$store = store;
 Vue.prototype.$actions = actions;
