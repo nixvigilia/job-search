@@ -1,10 +1,16 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
 
   # GET /jobs or /jobs.json
   def index
-    @jobs = Job.published.desc
+      @jobs = Job.published.desc
+    if params[:search].blank?
+      @jobs
+    else
+      @search = params[:search].downcase
+      @jobs = Job.published.desc.where('lower(title) LIKE :search', search: "%#{@search}%")
+    end
   end
 
   # GET /jobs/1 or /jobs/1.json

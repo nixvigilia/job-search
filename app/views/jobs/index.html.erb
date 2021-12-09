@@ -1,19 +1,11 @@
-<% content_for :hero do %>
-  <div class="py-20">
-    <div class="container flex flex-wrap justify-center mx-auto text-center">
-      <h1 class="text-4xl font-black leading-tight">Find a Ruby on Rails developer</h1>
-      <p class="w-full">The internet's number one resource for Ruby on Rails developers</p>
-
-      <div class="flex items-center justify-around mt-3">
-        <%= link_to "Find a developer", "#", class: "btn text-white bg-indigo-600 py-2 px-4 hover:bg-indigo-500 lg:mr-2 border border-indigo-500"%>
-        <%= link_to "Find a job", jobs_path(anchor: "jobs-index"), class: "bg-transparent hover:bg-purple-500 text-purple-600 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent rounded lg:ml-2" %>
-      </div>
-
-      <p class="w-full mt-3">or find a developer friends in the <%= link_to "community", '#', class: "text-purple-600" %></p>
-
-    </div>
-  </div>
-<% end %>
+<%= form_tag(jobs_path, :method => "get") do %>
+     <div class="sm:flex items-center bg-white rounded-lg overflow-hidden py-1 justify-between max-w-2xl">
+          <%= search_field_tag :search, params[:search] , placeholder: "Job Title or Keyword", class: "form-control text-base text-gray-400 flex-grow border border-gray-400 px-2 outline-none rounded py-3"%>
+					<div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
+          <%= button_tag "Search", :class => "bg-indigo-600 rounded-md font-bold text-white px-6 py-3 transition duration-300 ease-in-out hover:bg-purple-600 mr-6", :name => nil %>
+					</div>
+				</div>
+    <% end %>
 
 <div id="jobs-index" class="container px-0 mx-auto lg:px-48">
   <%= render @jobs %>
