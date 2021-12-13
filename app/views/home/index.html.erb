@@ -1,4 +1,5 @@
 <% content_for :hero do %>
+
   <div class="py-20">
     <div class="container mx-auto rounded-lg p-14">
       <h1 class="text-6xl font-black leading-tight">Find the <span class="text-indigo-600">perfect job</span> for you</h1>
@@ -19,8 +20,9 @@
   </div>
 
 <% end %>
-
+<%=@file_contents%>
+<h1>asdasdssdasdsad</h1>
 
 <div id="jobs-index" class="container px-0 mx-auto lg:px-48">
-  <%= render @jobs %>
+  <%#= render @jobs %>
 </div>

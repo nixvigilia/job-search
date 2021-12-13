@@ -1,13 +1,6 @@
 import Vue from "vue/dist/vue.esm";
 import axios from "axios";
 import { getMetaValue } from "helpers";
-import {
-  required,
-  minLength,
-  url,
-  email,
-  numeric,
-} from "vuelidate/lib/validators";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
@@ -23,11 +16,10 @@ export const store = Vue.observable({
       companyLogo: null,
       companyDescription: null,
       companyEmail: null,
-      compensationRange: null,
+      compensationRange: "50,000 - 60,000",
       compensationType: "Full-time",
-      description: null,
       estimatedHours: null,
-      headquarters: null,
+      headquarters: "Philippines",
       linkToApply: null,
       price: 199,
       basePrice: 199,
@@ -82,27 +74,35 @@ export const actions = {
   },
 
   handlePurchase(stripeResult) {
-    const formData = new FormData();
+    let newJobForm = document.getElementById("newJob");
+    let formData = new FormData(newJobForm);
     const job = store.form.job;
 
-    formData.append("company_email", job.companyEmail);
-    formData.append("company_name", job.companyName);
-    formData.append("company_website", job.companyWebsite);
-    formData.append("company_description", job.companyDescription);
-    formData.append("compensation_range", job.compensationRange);
-    formData.append("compensation_type", job.compensationType);
-    formData.append("description", job.jobDescription);
-    formData.append("headquarters", job.headquarters);
-    formData.append("link_to_apply", job.linkToApply);
-    formData.append("title", job.jobTitle);
-    formData.append("years_of_experience", job.yearsOfExperience);
-    formData.append("upsell_type", job.upsellType);
-    formData.append("remote", actions.handleBoolean(job.remote, "Yes"));
-    formData.append("price", job.price);
-
     if (job.companyLogo) {
-      formData.append("companyLogo", job.companyLogo);
+      formData.append("job[company_logo]", job.companyLogo);
     }
+
+    formData.append("job[company_email]", job.companyEmail);
+    formData.append("job[company_name]", job.companyName);
+    formData.append("job[company_website]", job.companyWebsite);
+    formData.append("job[company_description]", job.companyDescription);
+    formData.append("job[compensation_range]", job.compensationRange);
+    formData.append("job[compensation_type]", job.compensationType);
+    formData.append("job[description]", job.jobDescription);
+    // formData.append("estimated_hours", job.estimatedHours);
+    // formData.append("featured_until", job.featuredUntil);
+    formData.append("job[headquarters]", job.headquarters);
+    // formData.append("link_to_apply", job.linkToApply);
+    formData.append("job[title]", job.jobTitle);
+    formData.append("job[years_of_experience]", job.yearsOfExperience);
+    formData.append("job[upsell_type]", job.upsellType);
+    // formData.append("remote", actions.handleBoolean(job.remote, "Yes"));
+    formData.append("job[price]", job.price);
+
+    // checking form data entries
+    // for (var pair of formData.entries()) {
+    //   console.log(pair[0] + ", " + pair[1]);
+    // }
 
     axios({
       url: "/jobs",

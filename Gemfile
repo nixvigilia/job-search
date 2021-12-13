@@ -26,7 +26,7 @@ gem "simple_discussion", "~> 1.3"
 gem "stripe", "~> 5.39"
 gem "stripe_event", "~> 2.3"
 gem 'whenever', require: false
-
+gem 'active_storage_base64'
 
 group :development, :test do
   gem 'annotate', '~> 3.1', '>= 3.1.1'

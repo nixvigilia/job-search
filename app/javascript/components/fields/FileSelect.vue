@@ -4,6 +4,7 @@
       class="object-cover rounded-full"
       :src="$store.form.job.companyLogo"
       :class="{ 'mt-2 w-32 h-32': !!$store.form.job.companyLogo }"
+      id="companyLogo"
     />
     <div v-if="error" class="mb-1 text-sm text-red-500">{{ error }}</div>
     <div v-if="!$store.form.job.companyLogo">
@@ -11,7 +12,12 @@
         <div class="inline-block select-button btn btn-default">
           <span>Select file</span>
         </div>
-        <input type="file" @change="handleFileChange" name="companyLogo" />
+        <input
+          type="file"
+          ref="inputFile"
+          @change="handleFileChange"
+          name="companyLogo"
+        />
       </label>
     </div>
     <button-remove v-else @buttonRemoveClicked="removeImage"></button-remove>
@@ -28,12 +34,12 @@ export default {
     return {
       companyLogo: "",
       error: "",
+      inputPicture: null,
     };
   },
   methods: {
     handleFileChange(e) {
       this.$emit("input", e.target.files[0]);
-
       let files = e.target.files || e.dataTransfer.files;
       let imageTypes = ["image/gif", "image/png", "image/jpeg", "image/jpg"];
 
@@ -64,6 +70,7 @@ export default {
 
       reader.readAsDataURL(file);
     },
+
     removeImage() {
       this.$store.form.job.companyLogo = null;
       this.$actions.updateForm("companyLogo", null);

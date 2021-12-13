@@ -20,6 +20,7 @@
           @submit.prevent="submit"
           enctype="multipart/form-data"
           ref="jobForm"
+          id="newJob"
         >
           <div v-if="$store.form.step === 1">
             <JobInfo @nextStep="handleNextStep" />
@@ -72,6 +73,7 @@ export default {
     this.$actions.updateForm("compensationType", "Full-time");
     this.$actions.updateForm("yearsOfExperience", "3");
     this.$actions.updateForm("upsellType", "No thanks");
+    this.$actions.updateForm("price", this.$store.form.job.headquarters);
 
     const data = new FormData();
     data.append("upsell_type", this.$store.form.job.upsellType);

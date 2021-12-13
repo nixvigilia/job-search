@@ -29,13 +29,17 @@ class JobsController < ApplicationController
   # POST /jobs or /jobs.json
   def create
     @job = Job.new(job_params)
+    if !params[:job][:company_logo].empty?
+      @job.company_logo.attach(data: params[:job][:company_logo], filename: "1_#{Time.current.to_i}", )
+    end
     @job.user = current_user
-
+    
     if @job.save
       render json: { redirect_url: job_url(@job), notice: "Thanks for posting! Your job is now pending review." }
     else
       render json: @job.errors
     end
+
   end
 
   # PATCH/PUT /jobs/1 or /jobs/1.json
@@ -92,25 +96,25 @@ class JobsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def job_params
-      # params.require(:job).permit()
-      params.permit(
-        :company_logo, 
-        :company_email,
-        :company_name, 
-        :company_website, 
-        :company_description, 
-        :compensation_range,
-        :compensation_type,  
-        :description, 
-        :estimated_hours, 
-        :featured_until, 
-        :headquarters, 
-        :link_to_apply, 
-        :price, 
-        :remote, 
-        :title, 
-        :upsell_type, 
-        :years_of_experience)
-    end
+
+  
+  def job_params
+    params.require(:job).permit(
+      :company_email,
+      :company_name, 
+      :company_website, 
+      :company_description, 
+      :compensation_range,
+      :compensation_type,  
+      :description, 
+      # :estimated_hours, 
+      # :featured_until, 
+      :headquarters, 
+      :link_to_apply, 
+      :price, 
+      :remote, 
+      :title, 
+      :upsell_type, 
+      :years_of_experience)
+  end
 end

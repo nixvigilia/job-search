@@ -1,7 +1,8 @@
 <template>
   <div>
+    <h3 class="mb-2 text-2xl font-black">About the job</h3>
     <a
-      @click.prevent="next()"
+      @click="next()"
       class="
         btn
         text-white
@@ -13,10 +14,9 @@
         border border-indigo-500
         btn-lg
       "
+      :class="{ 'opacity-25 pointer-events-none': $store.formInvalid }"
       >Continue</a
     >
-    <h3 class="mb-2 text-2xl font-black">About the job</h3>
-
     <div class="inline-flex mb-6">
       <p class="m-0 text-xs tracking-wide text-gray-600 uppercase">
         Required fields
@@ -64,6 +64,8 @@
       <CompanyEmail class="lg:col-span-1"></CompanyEmail>
     </div>
 
+    <Headquarters></Headquarters>
+
     <CompanyDescription class="mb-6"></CompanyDescription>
 
     <JobUpsells></JobUpsells>
@@ -74,8 +76,18 @@
 
     <a
       @click="next()"
-      class="btn btn-white btn-outline btn-lg"
-      :class="{ 'opacity-25 pointer-events-none': !$store.formInvalid }"
+      class="
+        btn
+        text-white
+        bg-indigo-600
+        py-2
+        px-4
+        hover:bg-indigo-500
+        lg:mr-2
+        border border-indigo-500
+        btn-lg
+      "
+      :class="{ 'opacity-25 pointer-events-none': $store.formInvalid }"
       >Continue</a
     >
   </div>
@@ -95,6 +107,7 @@ import CompanyEmail from "../fields/CompanyEmail";
 import FileSelect from "../fields/FileSelect";
 import CompanyWebsite from "../fields/CompanyWebsite";
 import CompanyDescription from "../fields/CompanyDescription";
+import Headquarters from "../fields/Headquarters";
 import JobUpsells from "../JobUpsells";
 
 export default {
@@ -113,6 +126,7 @@ export default {
     CompanyWebsite,
     CompanyDescription,
     JobUpsells,
+    Headquarters,
   },
   methods: {
     next() {

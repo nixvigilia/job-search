@@ -75,3 +75,5 @@ module.exports = {
 - yarn add vuelidate
 
 - rails g migration add_company_email_to_jobs company_email:string
+
+- gem 'active_storage_base64'

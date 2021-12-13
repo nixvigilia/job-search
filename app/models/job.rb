@@ -35,7 +35,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Job < ApplicationRecord
-
+  
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
@@ -43,7 +43,8 @@ class Job < ApplicationRecord
   belongs_to :user
   has_rich_text :description
   has_rich_text :company_description
-  has_one_attached :company_logo
+  # has_one_attached :company_logo
+  has_one_base64_attached :company_logo
 
   # scopes
   scope :desc, -> { order(created_at: :desc) }
