@@ -68,12 +68,7 @@ export default {
     },
   },
   mounted() {
-    this.$actions.updateForm("price", this.$store.form.job.price);
-    this.$actions.updateForm("remote", true);
-    this.$actions.updateForm("compensationType", "Full-time");
-    this.$actions.updateForm("yearsOfExperience", "3");
-    this.$actions.updateForm("upsellType", "No thanks");
-    this.$actions.updateForm("price", this.$store.form.job.headquarters);
+    // this.$actions.updateForm("price", this.$store.form.job.price);
 
     const data = new FormData();
     data.append("upsell_type", this.$store.form.job.upsellType);

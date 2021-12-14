@@ -107,7 +107,7 @@ class JobsController < ApplicationController
       :compensation_range,
       :compensation_type,  
       :description, 
-      # :estimated_hours, 
+      :estimated_hours, 
       # :featured_until, 
       :headquarters, 
       :link_to_apply, 

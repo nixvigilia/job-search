@@ -89,7 +89,7 @@ export const actions = {
     formData.append("job[compensation_range]", job.compensationRange);
     formData.append("job[compensation_type]", job.compensationType);
     formData.append("job[description]", job.jobDescription);
-    // formData.append("estimated_hours", job.estimatedHours);
+    formData.append("job[estimated_hours]", job.estimatedHours);
     // formData.append("featured_until", job.featuredUntil);
     formData.append("job[headquarters]", job.headquarters);
     // formData.append("link_to_apply", job.linkToApply);

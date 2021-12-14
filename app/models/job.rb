@@ -35,7 +35,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Job < ApplicationRecord
-  
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
