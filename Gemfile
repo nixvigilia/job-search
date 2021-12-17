@@ -9,7 +9,12 @@ gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 5.0'
+
+# review and apply
+gem 'hiredis', '~> 0.6.1'
 gem 'redis', '~> 4.0'
+# ---------
+
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'

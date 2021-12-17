@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-      keys = [:name, :job_seeker, :employer]
+      keys = [:first_name, :last_name, :job_seeker, :employer]
       devise_parameter_sanitizer.permit(:sign_up, keys: keys)
       devise_parameter_sanitizer.permit(:account_update, keys: keys)
     end

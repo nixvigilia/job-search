@@ -1,5 +1,12 @@
 <% content_for :hero do %>
 
+<app inline-template :message="<%= "GORAILS".to_json %>">
+  <h1>{{message}}</h1>
+</app>
+
+<app :message="<%= "hello".to_json %>"></app>
+
+
   <div class="py-20">
     <div class="container mx-auto rounded-lg p-14">
       <h1 class="text-6xl font-black leading-tight">Find the <span class="text-indigo-600">perfect job</span> for you</h1>

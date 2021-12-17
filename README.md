@@ -65,10 +65,14 @@ module.exports = {
 
 # Stripe
 
-- rails credentials:edit --environment=development
 <!-- new -->
-- EDITOR="mate --wait" bin/rails credentials:edit --environment=development
+
+- rails credentials:edit --environment=development
+
 <!-- code -->
+
+- EDITOR="mate --wait" bin/rails credentials:edit --environment=development
+
 - EDITOR="code --wait" bin/rails credentials:edit --environment=development
 
 - yarn add axios
@@ -77,3 +81,19 @@ module.exports = {
 - rails g migration add_company_email_to_jobs company_email:string
 
 - gem 'active_storage_base64'
+
+- yarn add @tailwindcss/forms
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    // ...
+  ],
+};
+```

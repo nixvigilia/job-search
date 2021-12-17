@@ -4,12 +4,15 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs";
-import Turbolinks from "turbolinks";
+// import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
+import TurbolinksAdapter from "vue-turbolinks";
+import Vue from "vue/dist/vue.esm";
+import App from "../app.vue";
 
 Rails.start();
-Turbolinks.start();
+// Turbolinks.start();
 ActiveStorage.start();
 require("trix");
 require("@rails/actiontext");
@@ -17,3 +20,13 @@ require("@rails/actiontext");
 import "controllers";
 import "src/job_form";
 import "stylesheets/application";
+
+Vue.use(TurbolinksAdapter);
+
+Vue.component("app", App);
+
+document.addEventListener("turbolinks:load", () => {
+  const app = new Vue({
+    el: '[data-behavior="vue"]',
+  });
+});
