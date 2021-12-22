@@ -2,7 +2,7 @@ import { store } from "../store";
 import { Controller } from "stimulus";
 import Vue from "vue";
 
-const VueComponent = (component) =>
+const NewFormComponent = (component) =>
   class extends Controller {
     static targets = ["mount"];
 
@@ -22,4 +22,4 @@ const VueComponent = (component) =>
     }
   };
 
-export default VueComponent;
+export default NewFormComponent;

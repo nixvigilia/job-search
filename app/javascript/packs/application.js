@@ -4,15 +4,15 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs";
-// import Turbolinks from "turbolinks";
+import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import TurbolinksAdapter from "vue-turbolinks";
 import Vue from "vue/dist/vue.esm";
-import App from "../app.vue";
+// import Checkbox from "../checkbox.vue";
 
 Rails.start();
-// Turbolinks.start();
+Turbolinks.start();
 ActiveStorage.start();
 require("trix");
 require("@rails/actiontext");
@@ -23,10 +23,10 @@ import "stylesheets/application";
 
 Vue.use(TurbolinksAdapter);
 
-Vue.component("app", App);
+// Vue.component("checkbox", Checkbox);
 
 document.addEventListener("turbolinks:load", () => {
-  const app = new Vue({
-    el: '[data-behavior="vue"]',
-  });
+  //   const checkbox = new Vue({
+  //     el: '[data-behavior="vue"]',
+  //   });
 });

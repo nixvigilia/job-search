@@ -8,9 +8,8 @@
 
     <%= yield :hero %>
     
-    <main class="px-4 lg:px-10" data-behavior="vue">
+    <main class="px-4 lg:px-10" >
       <%= content_for?(:content) ? yield(:content) : yield %>
-
     </main>
   </body>
 </html>
