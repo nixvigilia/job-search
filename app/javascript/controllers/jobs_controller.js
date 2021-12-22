@@ -1,4 +1,4 @@
 import JobForm from "components/JobForm";
-import VueComponent from "./vue_component";
+import NewFormComponent from "./new_form_component";
 
-export default VueComponent(JobForm);
+export default NewFormComponent(JobForm);

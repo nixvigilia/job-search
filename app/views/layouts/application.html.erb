@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html class="antialiased">
+<html class="antialiased h-full bg-gray-50">
   <%= render "shared/head" %>
 
-  <body class="font-sans font-normal leading-normal text-gray-800 bg-white">
+  <body class="font-sans font-normal leading-normal text-gray-800">
     <%= render "shared/flash_notice" %>
     <%= render "shared/header" unless current_page?(new_job_url) %>
 
     <%= yield :hero %>
     
-    <main class="px-4 lg:px-10">
+    <main class="px-4 lg:px-10" >
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   </body>
