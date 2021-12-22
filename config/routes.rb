@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   post 'intents', to: "jobs#intents"
 
 
-  devise_for :users
+  Rails.application.routes.draw do
+    devise_for :users, controllers: {
+      registrations: 'users/registrations'
+    }
+  end
   root to: 'home#index'
 
   
