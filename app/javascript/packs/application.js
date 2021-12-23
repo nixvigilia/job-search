@@ -9,7 +9,7 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import TurbolinksAdapter from "vue-turbolinks";
 import Vue from "vue/dist/vue.esm";
-// import Checkbox from "../checkbox.vue";
+import Vuex from "vuex";
 
 Rails.start();
 Turbolinks.start();
@@ -22,8 +22,7 @@ import "src/job_form";
 import "stylesheets/application";
 
 Vue.use(TurbolinksAdapter);
-
-// Vue.component("checkbox", Checkbox);
+Vue.use(Vuex);
 
 document.addEventListener("turbolinks:load", () => {
   //   const checkbox = new Vue({

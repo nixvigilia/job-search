@@ -13,11 +13,14 @@ Rails.application.routes.draw do
 
   Rails.application.routes.draw do
     devise_for :users, controllers: {
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      sessions: 'users/sessions'
     }
   end
-  root to: 'home#index'
 
-  
+  get '/dashboard/:id', to: 'dashboard#dashboard', as: 'dashboard'
+
+
+  root to: 'home#index'
 
 end

@@ -10,15 +10,15 @@ User.delete_all
 Job.delete_all
 
 
-admin = User.new(email: "nix@emfloy.com", password: "password", password_confirmation: "password", admin: true, job_seeker: true, employer: true)
+admin = User.new(email: "nix@joblite.com", password: "password", password_confirmation: "password", admin: true, job_seeker: true, employer: true)
 admin.skip_confirmation!
 admin.save
 
-job_seeker = User.new(email: "job_seeker@emfloy.com", password: "password", password_confirmation: "password", admin: false, job_seeker: true, employer: false)
+job_seeker = User.new(email: "job_seeker@joblite.com", password: "password", password_confirmation: "password", admin: false, job_seeker: true, employer: false)
 job_seeker.skip_confirmation!
 job_seeker.save
 
-employer = User.new(email: "employer@emfloy.com", password: "password", password_confirmation: "password", admin: false, job_seeker: false, employer: true)
+employer = User.new(email: "employer@joblite.com", password: "password", password_confirmation: "password", admin: false, job_seeker: false, employer: true)
 employer.skip_confirmation!
 employer.save
 

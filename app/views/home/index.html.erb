@@ -1,25 +1,41 @@
 <% content_for :hero do %>
-  <div class="py-20">
+
+
     <div class="container mx-auto rounded-lg p-14">
       <h1 class="text-6xl font-black leading-tight">Find the <span class="text-indigo-600">perfect job</span> for you</h1>
       <p class="w-full text-2xl py-2">Find Jobs, Employment & Career Opportunities</p>
     <%= form_tag(jobs_path, :method => "get") do %>
-     <div class="sm:flex items-center bg-white rounded-lg overflow-hidden py-1 justify-between max-w-2xl">
+    <div class="sm:flex items-center rounded-lg overflow-hidden py-1 justify-between max-w-2xl">
           <%= search_field_tag :search, params[:search] , placeholder: "Job Title or Keyword", class: "form-control text-base text-gray-400 flex-grow border border-gray-400 px-2 outline-none rounded py-3"%>
-					<div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
+          <div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
           <%= button_tag "Search", :class => "bg-indigo-600 rounded-md font-bold text-white px-6 py-3 transition duration-300 ease-in-out hover:bg-purple-600 mr-6", :name => nil %>
-					</div>
-				</div>
+          </div>
+        </div>
     <% end %>
       
       <%# <p class="w-full mt-3">or find a developer friends in the <%= link_to "community", '#', class: "text-purple-600" %><%# </p> %>
-
     </div>
-  </div>
+
+
 
 <% end %>
 
 
-<div id="jobs-index" class="container px-0 mx-auto lg:px-48">
-  <%#= render @jobs %>
-</div>
+  <div id="jobs-index" class="container mx-auto rounded-lg p-14">
+    <div class="grid grid-cols-1 pt-6 lg:grid-cols-12">
+
+      <div class="lg:col-span-6 p-1">
+        <%= render @jobs %>
+      </div>
+
+
+      <div class="lg:col-span-6 p-1">
+      <%# @jobs.each do |job| %>
+        <h1 class="lg:text-4xl leading-tight text-3xl font-black text-indigo-600 mb-4"><h1>
+        <%# end %>
+      </div>
+
+      
+    </div>
+  </div>
+
