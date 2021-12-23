@@ -1,6 +1,7 @@
-import Vue from "vue/dist/vue.esm";
+import Vue from "vue";
 import axios from "axios";
 import { getMetaValue } from "helpers";
+import { darkModeKey } from "config.js";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
@@ -121,3 +122,31 @@ export const actions = {
       });
   },
 };
+
+export const dashboard = Vue.observable({
+  state: {
+    /* User */
+    step: 9,
+    userName: null,
+    userEmail: null,
+    userAvatar: null,
+
+    /* fullScreen - fullscreen form layout (e.g. login page) */
+
+    isFullScreen: false,
+
+    /* Aside */
+    isAsideMobileExpanded: false,
+    isAsideLgActive: false,
+
+    /* Dark mode */
+    darkMode: false,
+
+    /* Field focus with ctrl+k (to register only once) */
+    isFieldFocusRegistered: false,
+
+    /* Sample data (commonly used) */
+    clients: [],
+    history: [],
+  },
+});

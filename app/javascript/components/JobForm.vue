@@ -1,7 +1,6 @@
 <template>
   <div class="pt-8 pb-16">
     <step-pagination></step-pagination>
-
     <div
       class="
         relative

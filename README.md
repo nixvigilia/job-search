@@ -97,3 +97,5 @@ module.exports = {
   ],
 };
 ```
+
+- yarn add mdi-vue @mdi/js
