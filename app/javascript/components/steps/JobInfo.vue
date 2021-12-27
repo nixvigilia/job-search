@@ -1,22 +1,7 @@
 <template>
   <div>
     <h3 class="mb-2 text-2xl font-black">About the job</h3>
-    <a
-      @click="next()"
-      class="
-        btn
-        text-white
-        bg-indigo-600
-        py-2
-        px-4
-        hover:bg-indigo-500
-        lg:mr-2
-        border border-indigo-500
-        btn-lg
-      "
-      :class="{ 'opacity-25 pointer-events-none': $store.formInvalid }"
-      >Continue</a
-    >
+
     <div class="inline-flex mb-6">
       <p class="m-0 text-xs tracking-wide text-gray-600 uppercase">
         Required fields
