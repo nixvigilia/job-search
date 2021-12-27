@@ -10,7 +10,7 @@ import Vuelidate from "vuelidate";
 import "controllers";
 import "src/data";
 import "stylesheets/application";
-import ref from "vue-ref";
+import VueRouter from "vue-router";
 
 Rails.start();
 Turbolinks.start();
@@ -18,7 +18,8 @@ Vue.use(Vuex);
 Vue.use(TurbolinksAdapter);
 Vue.use(VuePluralize);
 Vue.use(Vuelidate);
-Vue.use(ref);
+Vue.use(VueRouter);
+
 ActiveStorage.start();
 require("trix");
 require("@rails/actiontext");

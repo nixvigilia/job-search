@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div>
     <component
       :is="is"
@@ -12,6 +12,7 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
 export default {
   props: {
     href: {
@@ -37,56 +38,49 @@ export default {
   },
   computed: {
     is() {
-      if (props.href) {
+      if (this.href) {
         return "a";
       }
-
-      if (props.to) {
+      if (this.to) {
         return "router-link";
       }
-
       return "div";
     },
     componentClass() {
       const base = [
-        props.type,
+        this.type,
         "items-center",
         "grow-0",
         "shrink-0",
         "relative",
         "cursor-pointer",
         "hover:text-blue-500",
-        props.active
-          ? props.activeColor
+        this.active
+          ? this.activeColor
           : "text-black dark:text-white dark:hover:text-gray-400",
       ];
-
-      if (props.type === "block") {
+      if (this.type === "block") {
         base.push("lg:flex");
       }
-
-      if (!props.dropdown) {
+      if (!this.dropdown) {
         base.push("py-2", "px-3");
       } else {
         base.push("p-0", "lg:py-2", "lg:px-3");
       }
-
-      if (props.hasDivider) {
+      if (this.hasDivider) {
         base.push(
           "lg:border-r",
           "lg:border-gray-100",
           "lg:dark:border-gray-800"
         );
       }
-
-      if (props.isDesktopIconOnly) {
+      if (this.isDesktopIconOnly) {
         base.push("lg:w-16", "lg:justify-center");
       }
-
       return base;
     },
     activeClass() {
-      return is.value === "router-link" ? props.activeColor : null;
+      return this.is.value === "router-link" ? this.activeColor : null;
     },
   },
 };

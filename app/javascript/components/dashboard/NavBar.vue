@@ -21,23 +21,20 @@
       :class="{ 'ml-60 lg:ml-0': isAsideMobileExpanded }"
     >
       <div class="flex-1 items-stretch flex h-14">
-        <nav-bar-item type="flex lg:hidden" @click.prevent="menuToggleMobile">
+        <NavBarItem type="flex lg:hidden" @click.prevent="menuToggleMobile">
           <icon :path="menuToggleMobileIcon" size="24" />
-        </nav-bar-item>
-        <nav-bar-item
-          type="hidden lg:flex xl:hidden"
-          @click.prevent="menuOpenLg"
-        >
+        </NavBarItem>
+        <NavBarItem type="hidden lg:flex xl:hidden" @click.prevent="menuOpenLg">
           <icon :path="mdiMenu" size="24" />
-        </nav-bar-item>
-        <nav-bar-item>
+        </NavBarItem>
+        <NavBarItem>
           <nav-bar-search />
-        </nav-bar-item>
+        </NavBarItem>
       </div>
       <div class="flex-none items-stretch flex h-14 lg:hidden">
-        <nav-bar-item @click.prevent="menuNavBarToggle">
+        <NavBarItem @click.prevent="menuNavBarToggle">
           <icon :path="menuNavBarToggleIcon" size="24" />
-        </nav-bar-item>
+        </NavBarItem>
       </div>
       <div
         class="
@@ -71,19 +68,19 @@
           "
         >
           <nav-bar-menu has-divider>
-            <nav-bar-item-label :icon="mdiMenu" label="Sample menu" />
+            <NavBarItemLabel :icon="mdiMenu" label="Sample menu" />
 
             <template #dropdown>
-              <nav-bar-item>
-                <nav-bar-item-label :icon="mdiClockOutline" label="Item One" />
-              </nav-bar-item>
-              <nav-bar-item>
-                <nav-bar-item-label :icon="mdiCloud" label="Item Two" />
-              </nav-bar-item>
+              <NavBarItem>
+                <NavBarItemLabel :icon="mdiClockOutline" label="Item One" />
+              </NavBarItem>
+              <NavBarItem>
+                <NavBarItemLabel :icon="mdiCloud" label="Item Two" />
+              </NavBarItem>
               <nav-bar-menu-divider />
-              <nav-bar-item>
-                <nav-bar-item-label :icon="mdiCrop" label="Item Last" />
-              </nav-bar-item>
+              <NavBarItem>
+                <NavBarItemLabel :icon="mdiCrop" label="Item Last" />
+              </NavBarItem>
             </template>
           </nav-bar-menu>
           <nav-bar-menu has-divider>
@@ -93,57 +90,56 @@
             </div>
 
             <template #dropdown>
-              <nav-bar-item to="/profile">
-                <nav-bar-item-label :icon="mdiAccount" label="My Profile" />
-              </nav-bar-item>
-              <nav-bar-item>
-                <nav-bar-item-label :icon="mdiCogOutline" label="Settings" />
-              </nav-bar-item>
-              <nav-bar-item>
-                <nav-bar-item-label :icon="mdiEmail" label="Messages" />
-              </nav-bar-item>
+              <NavBarItem to="/profile">
+                <NavBarItemLabel :icon="mdiAccount" label="My Profile" />
+              </NavBarItem>
+              <NavBarItem>
+                <NavBarItemLabel :icon="mdiCogOutline" label="Settings" />
+              </NavBarItem>
+              <NavBarItem>
+                <NavBarItemLabel :icon="mdiEmail" label="Messages" />
+              </NavBarItem>
               <nav-bar-menu-divider />
-              <nav-bar-item>
-                <nav-bar-item-label :icon="mdiLogout" label="Log Out" />
-              </nav-bar-item>
+              <NavBarItem>
+                <NavBarItemLabel :icon="mdiLogout" label="Log Out" />
+              </NavBarItem>
             </template>
           </nav-bar-menu>
-          <nav-bar-item
+          <NavBarItem
             has-divider
             is-desktop-icon-only
             @click.prevent="toggleLightDark"
           >
-            <nav-bar-item-label
+            <NavBarItemLabel
               :icon="mdiThemeLightDark"
               label="Light/Dark"
               is-desktop-icon-only
             />
-          </nav-bar-item>
-          <nav-bar-item
+          </NavBarItem>
+          <NavBarItem
             href="https://github.com/justboil/admin-one-vue-tailwind"
             has-divider
             is-desktop-icon-only
           >
-            <nav-bar-item-label
+            <NavBarItemLabel
               :icon="mdiGithub"
               label="GitHub"
               is-desktop-icon-only
             />
-          </nav-bar-item>
-          <nav-bar-item is-desktop-icon-only>
-            <nav-bar-item-label
+          </NavBarItem>
+          <NavBarItem is-desktop-icon-only>
+            <NavBarItemLabel
               :icon="mdiLogout"
               label="Log out"
               is-desktop-icon-only
             />
-          </nav-bar-item>
+          </NavBarItem>
         </div>
       </div>
     </nav>
   </div>
 </template>
 <script>
-import ref from "vue-ref";
 import NavBarItem from "./NavBarItem";
 import NavBarItemLabel from "./NavBarItemLabel";
 import NavBarMenu from "./NavBarMenu";
@@ -172,16 +168,26 @@ export default {
   data() {
     return {
       isMenuNavBarActive: false,
+      mdiMenu: mdiMenu,
+      mdiClockOutline: mdiClockOutline,
+      mdiCloud: mdiCloud,
+      mdiCrop: mdiCrop,
+      mdiAccount: mdiAccount,
+      mdiCogOutline: mdiCogOutline,
+      mdiEmail: mdiEmail,
+      mdiLogout: mdiLogout,
+      mdiGithub: mdiGithub,
+      mdiThemeLightDark: mdiThemeLightDark,
     };
   },
   components: {
     NavBarItem,
-    // NavBarItemLabel,
-    // NavBarMenu,
-    // NavBarMenuDivider,
-    // UserAvatar,
-    // Icon,
-    // NavBarSearch,
+    NavBarItemLabel,
+    NavBarMenu,
+    NavBarMenuDivider,
+    UserAvatar,
+    Icon,
+    NavBarSearch,
   },
   method: {
     toggleLightDark() {

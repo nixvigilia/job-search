@@ -1,6 +1,7 @@
 import { store } from "../store";
 import { Controller } from "stimulus";
 import Vue from "vue";
+import VueRouter from "vue-router";
 
 const DashboardComponent = (component) =>
   class extends Controller {
@@ -9,8 +10,9 @@ const DashboardComponent = (component) =>
     connect() {
       const el = this.dashboardTarget;
 
-      window.dashboard = new Vue({
+      new Vue({
         el,
+        VueRouter,
         render: (h) => h(component),
         data: store,
       });

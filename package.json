@@ -23,6 +23,7 @@
     "vue-loader": "^15.9.8",
     "vue-pluralize": "^0.0.2",
     "vue-ref": "^2.0.0",
+    "vue-router": "^3.5.3",
     "vue-template-compiler": "^2.6.14",
     "vue-trix": "^1.2.0",
     "vue-turbolinks": "^2.2.2",
